@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="havis.transform.transformer.imager" default="publish" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+	<property file="${basedir}/build.properties" />
+
+	<import>
+		<url url="${ivy.url}/ant/default.xml" />
+	</import>
+
+	<property name="build.dir.xml" value="${build.dir}/xml" />
+	<property name="build.dir.xml.classes" value="${build.dir.xml}/classes" />
+	<property name="build.dir.xml.src" value="${build.dir.xml}/src" />
+
+	<target name="clean-cache" description="Cleans the ivy cache">
+		<clean-cache />
+	</target>
+
+	<target name="clean-all" description="Cleans the project and ivy cache">
+		<clean-all />
+	</target>
+
+	<target name="compile">
+		<xjc name="imager" />
+		<compile dst="${build.dir.xml.classes}">
+			<src path="${build.dir.xml.src}" />
+		</compile>
+		<compile dst="${build.dir.classes}">
+			<src path="${src.main.dir}" />
+			<classpath>
+				<pathelement location="${build.dir.xml.classes}" />
+			</classpath>
+		</compile>
+	</target>
+
+	<target name="jar" depends="compile" description="Builds a JAR file from the project.">
+		<jar-bin />
+	</target>
+
+	<target name="test" depends="compile" unless="${skip.test}">
+		<test />
+	</target>
+
+	<target name="deb" depends="jar">
+		<deb>
+			<!-- retrieve runtime dependencies -->
+			<ivy:retrieve pattern="${dst.dir}/bundle/50_[artifact].[ext]" conf="runtime" />
+		</deb>
+	</target>
+
+	<target name="publish" depends="deb" description="Publishes the JAR to the repository">
+		<publish jar="false" app="false" />
+	</target>
+
+
+</project>

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+URL="http://admin@localhost/rest/apps"
+PKG="40_@Bundle-SymbolicName@.jar 50_zxing-javase.jar 50_zxing-core.jar"
+
+for pkg in $PKG; do
+  busybox wget $URL/$pkg/unplug -q --spider
+done
+
+exit 0

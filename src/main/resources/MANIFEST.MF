@@ -1,0 +1,23 @@
+Bundle-Name: Ha-VIS Transform Transformer Imager
+Bundle-SymbolicName: havis.transform.transformer.imager
+Bundle-Version: 2.7.0
+Implementation-Version: 2.7
+Bundle-ManifestVersion: 2
+Bundle-Vendor: HARTING IT_SD
+Bundle-Activator: havis.transform.osgi.Activator
+Export-Package: havis.transform.transformer.imager
+Import-Package: 
+ com.google.zxing,
+ com.google.zxing.client.j2se,
+ com.google.zxing.common,
+ com.google.zxing.multi,
+ javax.imageio,
+ com.fasterxml.jackson.core,
+ com.fasterxml.jackson.databind, 
+ havis.transform,
+ havis.transform.osgi,
+ havis.net.rest.shared.provider,
+ havis.net.rest.shared.data,
+ javax.ws.rs,
+ javax.ws.rs.core
+

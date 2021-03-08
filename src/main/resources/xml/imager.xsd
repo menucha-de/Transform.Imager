@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="urn:havis:transform:transformer:imager:xsd:1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:havis:transform:transformer:imager:xsd:1" elementFormDefault="qualified">
+	
+	<xs:complexType name="Barcode">
+		<xs:sequence>
+			<xs:element name="type" type="xs:string"/>
+			<xs:element name="code" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Report">
+		<xs:sequence>
+			<xs:element name="timestamp" type="xs:long"/>
+			<xs:element name="barcodes" type="Barcode" maxOccurs="unbounded" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>	
+	
+</xs:schema>
