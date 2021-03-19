@@ -61,7 +61,7 @@ public class ImagerTransformerTest {
 		Assert.assertNotEquals(0, current.getTimestamp());
 		List<Barcode> barcodes = current.getBarcodes();
 		Assert.assertEquals(1, barcodes.size());
-		Assert.assertEquals("http://www.harting.com", barcodes.get(0).getCode());
+		Assert.assertEquals("http://www.menucha.de", barcodes.get(0).getCode());
 		new Verifications() {
 			{
 				log.log(Level.FINE, "Cannot transform image. ",
